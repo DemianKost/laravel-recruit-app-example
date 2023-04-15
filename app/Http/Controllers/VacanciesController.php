@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Vacancy;
 
 class VacanciesController extends Controller
 {
@@ -12,7 +13,9 @@ class VacanciesController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Vacancy/Index');
+        return Inertia::render('Vacancy/Index', [
+            'vacancies' => Vacancy::all()
+        ]);
     }
 
     /**

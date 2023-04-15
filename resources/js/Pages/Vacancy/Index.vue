@@ -7,11 +7,11 @@
             <div class="md:w-2/3 w-full">
                 <h3 class="text-2xl font-semibold mb-6">Latest vacancies</h3>
 
-                <VacancyCard />
-                <VacancyCard />
-                <VacancyCard />
-                <VacancyCard />
-                <VacancyCard />
+                <VacancyCard
+                    v-for="(vacancy, key) in vacancies"
+                    :key="key"
+                    :vacancy="vacancy"
+                />
 
             </div>
 
@@ -55,4 +55,8 @@
 
 <script setup>
 import VacancyCard from './components/VacancyCard.vue';
+
+let props = defineProps({
+    vacancies: Array
+});
 </script>
