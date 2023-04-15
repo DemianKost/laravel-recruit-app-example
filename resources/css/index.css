@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background: url(../../public/bg.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
