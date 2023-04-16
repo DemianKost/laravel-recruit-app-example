@@ -7,9 +7,11 @@
                 <h2 class="text-2xl text-center font-bold mb-4">Login</h2>
                 <div class="mb-6">
                     <input v-model="form.email" type="email" class="w-full border border-zinc-300 rounded-full px-4 py-2" placeholder="E-mail" required />
+                    <div v-if="errors.email" class="text-red-500 text-xs mt-1">{{ errors.email }}</div>
                 </div>
                 <div class="mb-6">
                     <input v-model="form.password" type="password" class="w-full border border-zinc-300 rounded-full px-4 py-2" placeholder="Password" required />
+                    <div v-if="errors.password" class="text-red-500 text-xs mt-1">{{ errors.password }}</div>
                 </div>
                 <div class="mb-4">
                     <button type="submit" class="bg-blue-500 w-full py-2 text-white rounded-full">Sign In</button>
@@ -24,7 +26,8 @@
 import { useForm } from '@inertiajs/vue3';
 
 let props = defineProps({
-    success: String
+    success: String,
+    errors: Array
 })
 
 const form = useForm({

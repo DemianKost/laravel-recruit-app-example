@@ -20,7 +20,7 @@ class VacancyFactory extends Factory
         return [
             'user_id' => User::factory()->create(),
             'title' => fake()->text(20),
-            'description' => fake()->text(200)
+            'description' => fake()->text(800)
         ];
     }
 }

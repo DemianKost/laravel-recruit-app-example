@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Vacancy;
+use App\Http\Requests\Vacancy\StoreVacancyRequest;
 
 class VacanciesController extends Controller
 {
@@ -23,23 +24,31 @@ class VacanciesController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Vacancy/Create');
     }
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @param App\Http\Requests\Vacancy\StoreVacancyRequest $request
      */
-    public function store(Request $request)
+    public function store(StoreVacancyRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        Vacancy::create($data);
+
+        return redirect()->route('vacancies.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Vacancy $vacancy)
     {
-        return Inertia::render('Vacancy/Show');
+        return Inertia::render('Vacancy/Show', [
+            'vacancy' => $vacancy
+        ]);
     }
 
     /**
@@ -53,9 +62,9 @@ class VacanciesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Vacancy $vacancy)
     {
-        //
+        
     }
 
     /**

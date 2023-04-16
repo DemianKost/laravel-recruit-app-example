@@ -4,7 +4,7 @@
         <div class="md:w-2/3 w-full bg-white rounded-md py-8 px-8 shadow-sm mb-10">
             
             <div class="md:flex items-center justify-between mb-10">
-                <h3 class="text-3xl font-semibold mb-0">Junior PHP Developer</h3>
+                <h3 class="text-3xl font-semibold mb-0">{{ vacancy.title }}</h3>
                 <span class="text-xl font-semibold">$500-800</span>
             </div>
 
@@ -28,8 +28,14 @@
                 </div>
             </div>
 
-            <p class="text-justify text-zinc-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis sequi quo illo eveniet harum ullam assumenda. Provident in suscipit odit dolorem id, voluptatem tempore voluptatum. Expedita debitis repellat consequatur assumenda.</p>
+            <p class="text-justify text-zinc-500">{{ vacancy.description }}</p>
 
         </div>
     </div>
 </template>
+
+<script setup>
+    let props = defineProps({
+        vacancy: Object
+    });
+</script>
