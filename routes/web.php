@@ -28,6 +28,9 @@ Route::middleware('guest')->group( function() {
 
 // All user routes
 Route::middleware('auth')->group( function() {
+
     // Vacancy creator routes
+    Route::get('/vacancies/list', [VacanciesController::class, 'list']);
     Route::resource('/vacancies', VacanciesController::class);
+
 });

@@ -74,4 +74,14 @@ class VacanciesController extends Controller
     {
         //
     }
+
+    /**
+     * User vacancies page
+     */
+    public function list()
+    {
+        return Inertia::render('VacancyDashboard/Index', [
+            'vacancies' => auth()->user()->vacancies()->get()
+        ]);
+    }
 }
