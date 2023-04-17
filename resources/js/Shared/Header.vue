@@ -12,7 +12,7 @@
                     <li><a href="#">Resources</a></li>
                     <li><a href="#">Help</a></li>
                     <li><Link href="/profile">Profile</Link></li>
-                    <li><a href="#">Logout 🚪</a></li>
+                    <li><Link href="/logout">Logout 🚪</Link></li>
                 </ul>
                 <ul class="flex items-center space-x-4 font-light text-zinc-600" v-else>
                     <li><Link href="/register">Register</Link></li>

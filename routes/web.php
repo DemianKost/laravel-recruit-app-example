@@ -35,4 +35,6 @@ Route::middleware('auth')->group( function() {
 
     // Profile routes
     Route::get('/profile', [UserController::class, 'profile']);
+    Route::get('/logout', [UserController::class, 'logout']);
+
 });

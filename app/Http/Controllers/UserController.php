@@ -65,6 +65,18 @@ class UserController extends Controller
     }
 
     /**
+     * Logout function
+     * 
+     * @return void
+     */
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/');
+    }
+
+    /**
      * Profile page
      * 
      * @return \Illuminate\Http\Response
