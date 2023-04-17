@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-    import VacancyCard from '../Vacancy/components/VacancyCard.vue';
+    import VacancyCard from './components/VacancyCard.vue';
 
     let props = defineProps({
         vacancies: Array

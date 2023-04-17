@@ -63,4 +63,17 @@ class UserController extends Controller
 
         return redirect()->route('login')->with('success', 'You successfully create your account!');
     }
+
+    /**
+     * Profile page
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        return Inertia::render('Profile/Index', [
+            'user' => auth()->user()->first(),
+            'profile' => auth()->user()->profile()->first()
+        ]);
+    }
 }

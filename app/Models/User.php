@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Vacancy;
+use App\Models\Profile;
 
 class User extends Authenticatable
 {
@@ -43,11 +44,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function booting(): void
+    {
+        static::created(function ($user) {
+            Profile::create([
+                'user_id' => $user->id
+            ]);
+        });
+    }
+
     /**
      * Vacancies created by user
      */
     public function vacancies()
     {
         return $this->hasMany(Vacancy::class);
+    }
+    /**
+     * Profile data of user
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }

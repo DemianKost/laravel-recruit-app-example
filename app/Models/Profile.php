@@ -6,21 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class Vacancy extends Model
+class Profile extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-
-    // protected static function booting(): void
-    // {
-    //     static::creating(function ($vacancy) {
-    //         $vacancy->user_id = auth()->id();
-    //     });
-    // }
-
     /**
-     * User that created vacancy
+     * User that owns profile
      */
     public function user()
     {

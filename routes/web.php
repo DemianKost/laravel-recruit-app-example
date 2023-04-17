@@ -33,4 +33,6 @@ Route::middleware('auth')->group( function() {
     Route::get('/vacancies/list', [VacanciesController::class, 'list']);
     Route::resource('/vacancies', VacanciesController::class);
 
+    // Profile routes
+    Route::get('/profile', [UserController::class, 'profile']);
 });
