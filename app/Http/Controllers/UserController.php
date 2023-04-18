@@ -58,7 +58,8 @@ class UserController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt( $data['password'] )
+            'password' => bcrypt( $data['password'] ),
+            'role' => ($data['role']) ? 1 : 0
         ]);
 
         return redirect()->route('login')->with('success', 'You successfully create your account!');

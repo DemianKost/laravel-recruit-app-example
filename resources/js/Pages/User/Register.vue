@@ -4,7 +4,15 @@
         <div class="md:w-2/3 w-full bg-white rounded-md py-8 px-8 md:flex justify-center space-x-4 shadow-sm mb-10">
             
             <form @submit.prevent="form.post('/register')" class="w-1/3">
-                <h2 class="text-2xl text-center font-bold mb-4">Register</h2>
+                <h2 class="text-2xl text-center font-bold mb-4">Register a new account</h2>
+                <div class="mb-6 flex items-center justify-center">
+                    <span class="ml-3 text-sm text-zinc-500">Developer</span>
+                    <label class="relative inline-flex items-center cursor-pointer mx-3">
+                        <input v-model="form.role" type="checkbox" class="sr-only peer">
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    </label>
+                    <span class="text-sm text-zinc-500">Recruiter</span>
+                </div>
                 <div class="mb-6">
                     <input v-model="form.name" type="text" class="w-full border border-zinc-300 rounded-full px-4 py-2" placeholder="Name" />
                     <div v-if="errors.name" class="text-red-500 text-xs mt-1">{{ errors.name }}</div>
@@ -41,6 +49,7 @@ const form = useForm({
     name: '',
     company: '',
     email: '',
-    password: ''
+    password: '',
+    role: false
 });
 </script>
