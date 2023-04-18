@@ -77,15 +77,14 @@ class UserController extends Controller
     }
 
     /**
-     * Profile page
-     * 
-     * @return \Illuminate\Http\Response
+     * Update user function
      */
-    public function profile()
+    public function update(Request $request)
     {
-        return Inertia::render('Profile/Index', [
-            'user' => auth()->user()->first(),
-            'profile' => auth()->user()->profile()->first()
+        $user = auth()->user();
+
+        $user->update([
+            'name' => $request->name
         ]);
     }
 }

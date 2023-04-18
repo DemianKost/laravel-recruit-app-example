@@ -2,10 +2,10 @@
     <Header />
     <div class="container mx-auto flex flex-col items-center">
         <!-- Main profile info -->
-        <ProfileCard :user="props.user" :editable="true" />
+        <ProfileCard :user="props.user" :editable="false" />
 
         <!-- About profile -->
-        <AboutCard :profile="props.profile" :editable="true" />
+        <AboutCard :profile="props.profile" :editable="false" />
     </div>
 </template>
 

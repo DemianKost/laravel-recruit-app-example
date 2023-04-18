@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VacanciesController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,8 @@ Route::middleware('auth')->group( function() {
     Route::resource('/vacancies', VacanciesController::class);
 
     // Profile routes
-    Route::get('/profile', [UserController::class, 'profile']);
+    Route::post('/profile/user/update', [UserController::class, 'update']);
+    Route::resource('/profile', ProfileController::class);
     Route::get('/logout', [UserController::class, 'logout']);
 
 });
