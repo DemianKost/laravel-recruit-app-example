@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Traits\UUID;
 
 class Profile extends Model
 {
-    use HasFactory;
+    use HasFactory, UUID;
 
     protected $fillable = ['position', 'about'];
 
