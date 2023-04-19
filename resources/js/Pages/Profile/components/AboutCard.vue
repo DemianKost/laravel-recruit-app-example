@@ -32,7 +32,7 @@
     })
 
     function saveAbout() {
-        form.put(`/profile/${props.profile.user_id}`);
+        form.put(`/profile/${props.profile.id}`);
 
         isEditing = false;
     }

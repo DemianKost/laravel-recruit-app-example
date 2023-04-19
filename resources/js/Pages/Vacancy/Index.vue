@@ -8,7 +8,7 @@
                 <h3 class="text-2xl font-semibold mb-6">Latest vacancies</h3>
 
                 <VacancyCard
-                    v-for="(vacancy, key) in vacancies"
+                    v-for="(vacancy, key) in vacancies.data"
                     :key="key"
                     :vacancy="vacancy"
                 />

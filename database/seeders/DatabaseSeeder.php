@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Vacancy;
+use App\Models\Category;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,11 +16,31 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
 
         Vacancy::factory(10)->create();
+
+        $vacancy_id = Vacancy::first();
+
+        Category::create([
+            'vacancy_id' => $vacancy_id->id,
+            'type' => 'programming_language',
+            'name' => 'PHP' 
+        ]);
+
+        Category::create([
+            'vacancy_id' => $vacancy_id->id,
+            'type' => 'programming_language',
+            'name' => 'JavaScript' 
+        ]);
+
+        Category::create([
+            'vacancy_id' => $vacancy_id->id,
+            'type' => 'programming_language',
+            'name' => 'Laravel' 
+        ]);
     }
 }

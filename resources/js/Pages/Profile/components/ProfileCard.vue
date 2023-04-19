@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="profile__info">
-            <p class="text-zinc-500 font-mono text-center">HR in Big Brain Inc.</p>
+            <!-- <p class="text-zinc-500 font-mono text-center">HR in Big Brain Inc.</p> -->
         </div>
 
         <div class="flex justify-center mt-3" v-if="isEditing && editable">

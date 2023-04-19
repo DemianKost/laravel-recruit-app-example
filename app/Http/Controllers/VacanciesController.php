@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Vacancy;
 use App\Http\Requests\Vacancy\StoreVacancyRequest;
+use App\Http\Resources\Vacancy\GetVacanciesResource;
 
 class VacanciesController extends Controller
 {
@@ -15,7 +16,7 @@ class VacanciesController extends Controller
     public function index()
     {
         return Inertia::render('Vacancy/Index', [
-            'vacancies' => Vacancy::all()
+            'vacancies' => GetVacanciesResource::collection( Vacancy::all() )
         ]);
     }
 
@@ -47,7 +48,7 @@ class VacanciesController extends Controller
     public function show(Vacancy $vacancy)
     {
         return Inertia::render('Vacancy/Show', [
-            'vacancy' => $vacancy
+            'vacancy' => new GetVacanciesResource( $vacancy ),
         ]);
     }
 

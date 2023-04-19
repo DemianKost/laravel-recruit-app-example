@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
+use App\Models\Vacancy;
 
 return new class extends Migration
 {
@@ -12,13 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vacancies', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignIdFor(User::class, 'user_id');
-            $table->string('title');
-            $table->text('description');
-            $table->integer('salary_from');
-            $table->integer('salary_to');
+            $table->foreignIdFor(Vacancy::class, 'vacancy_id');
+            $table->string('type');
+            $table->string('name');
+            $table->index(['type', 'name']);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vacancies');
+        Schema::dropIfExists('categories');
     }
 };
