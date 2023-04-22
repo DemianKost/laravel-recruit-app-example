@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use Inertia\Inertia;
 use App\Models\Vacancy;
+use App\Models\Category;
 use App\Http\Requests\Vacancy\StoreVacancyRequest;
 use App\Http\Resources\Vacancy\GetVacanciesResource;
 
@@ -16,7 +17,9 @@ class VacanciesController extends Controller
     public function index()
     {
         return Inertia::render('Vacancy/Index', [
-            'vacancies' => GetVacanciesResource::collection( Vacancy::all() )
+            'vacancies' => GetVacanciesResource::collection(
+                Vacancy::all()
+            )
         ]);
     }
 
@@ -37,7 +40,34 @@ class VacanciesController extends Controller
     {
         $data = $request->validated();
 
-        Vacancy::create($data);
+        // Get all categories
+        $categories = [
+            'programming_language' => $data['programmingLanguages'],
+            'work_type' => $data['workTypes'],
+            'dev_level' => $data['devLevels']
+        ];
+
+        // Create vacancy
+        $vacancy = Vacancy::create([
+            'user_id' => auth()->id(),
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'salary_from' => $data['salary_from'],
+            'salary_to' => $data['salary_to']
+        ]);
+
+        // Save all vacancy categories
+        foreach ( $categories as $type => $value ) {
+            if ( $value ) {
+                foreach ( $value as $category ) {
+                    Category::create([
+                        'vacancy_id' => $vacancy->id,
+                        'type' => $type,
+                        'name' => $category
+                    ]);
+                }
+            }
+        }
 
         return redirect()->route('vacancies.index');
     }

@@ -22,7 +22,8 @@ class GetVacanciesResource extends JsonResource
             'salary_to' => $this->salary_to,
             'categories' => [
                 'workType' => $this->workTypes,
-                'programmingLanguages' => $this->programmingLanguages
+                'programmingLanguages' => $this->programmingLanguages,
+                'devLevels' => $this->devLevels
             ],
             'created_at' => $this->created_at
         ];

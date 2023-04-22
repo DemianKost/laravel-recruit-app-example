@@ -18,7 +18,11 @@
                 title="Work type: "
                 :categories="vacancy.data.categories.workType"
             />
-
+            <CategoriesList
+                v-if="vacancy.data.categories.devLevels.length > 0"
+                title="Developer level: "
+                :categories="vacancy.data.categories.devLevels"
+            />
 
             <p class="text-justify text-zinc-500">{{ vacancy.data.description }}</p>
 

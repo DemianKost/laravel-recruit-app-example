@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\UUID;
 
-class Category extends Model
+class Resume extends Model
 {
-    use HasFactory, UUID;
-
-    protected $fillable = ['vacancy_id', 'type', 'name'];
+    use HasFactory;
 }

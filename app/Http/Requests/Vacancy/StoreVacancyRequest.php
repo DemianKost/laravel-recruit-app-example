@@ -23,7 +23,12 @@ class StoreVacancyRequest extends FormRequest
     {
         return [
             'title' => 'required|string|min:15|max:140',
-            'description' => 'required|string|min:150|max:5000'
+            'description' => 'required|string|min:150|max:5000',
+            'salary_from' => 'required|integer',
+            'salary_to' => 'required|integer',
+            'programmingLanguages' => 'required',
+            'workTypes' => 'required',
+            'devLevels' => 'required'
         ];
     }
 }
