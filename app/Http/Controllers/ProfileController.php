@@ -49,9 +49,16 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
+        ( $profile->user->role == 1 )
+            ? $data = GetVacanciesResource::collection( $profile->user->vacancies )
+            : '';
+
         return Inertia::render('Profile/Show', [
             'user' => $profile->user,
-            'profile' => $profile
+            'profile' => $profile,
+            'data' => [
+                'info' => $data
+            ]
         ]);
     }
 
