@@ -6,12 +6,21 @@
         <hr>
         <div class="profile__about mt-3">
             
+            <VacancyCard
+                v-for="vacancy in vacancies"
+                :key="vacancy.id"
+                :vacancy="vacancy"
+            />
+
         </div>
     </div>
 </template>
 
 <script setup>
+    import VacancyCard from '../../Vacancy/components/VacancyCard.vue';
+
     let props = defineProps({
         profile: Object,
+        vacancies: Array
     })
 </script>

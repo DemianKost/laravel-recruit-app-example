@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Resources\Vacancy\GetVacanciesResource;
 
 class ProfileController extends Controller
 {
@@ -14,9 +15,16 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        ( auth()->user()->role == 1 )
+            ? $data = GetVacanciesResource::collection( auth()->user()->vacancies()->get() )
+            : '';
+
         return Inertia::render('Profile/Index', [
             'user' => auth()->user()->first(),
-            'profile' => auth()->user()->profile()->first()
+            'profile' => auth()->user()->profile()->first(),
+            'data' => [
+                'info' => $data
+            ]
         ]);
     }
 

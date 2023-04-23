@@ -8,7 +8,7 @@
         <AboutCard :profile="profile" :editable="true" />
 
         <!-- User vacancies/resume -->
-        <VacanciesCard v-if="user.role == 1" :profile="profile" />
+        <VacanciesCard v-if="user.role == 1" :profile="profile" :vacancies="data.info.data" />
         <ResumeCard v-else :profile="profile" />
     </div>
 </template>
@@ -21,6 +21,7 @@
 
     let props = defineProps({
         user: Object,
-        profile: Object
+        profile: Object,
+        data: Array
     });
 </script>
