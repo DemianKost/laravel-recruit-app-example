@@ -3,6 +3,13 @@
     <div class="container mx-auto flex justify-center">
         <div class="md:w-2/3 w-full bg-white rounded-md py-8 px-8 shadow-sm mb-10">
             
+            <div class="author__card mb-6 flex justify-center">
+                <Link :href="`/profile/${author.data.id}`" class="flex items-center">
+                    <div class="h-20 w-20 bg-red-400 rounded-full text-2xl flex items-center justify-center mr-4">🍄</div>
+                    <p class="text-xl font-mono">{{ author.data.name }}</p>
+                </Link>
+            </div>
+
             <div class="md:flex items-center justify-between mb-10">
                 <h3 class="text-3xl font-semibold mb-0">{{ vacancy.data.title }}</h3>
                 <span class="text-xl font-semibold">${{ vacancy.data.salary_from }} - {{ vacancy.data.salary_to }}</span>
@@ -34,6 +41,7 @@
     import CategoriesList from './components/CategoriesList.vue';
 
     let props = defineProps({
-        vacancy: Object
+        vacancy: Object,
+        author: Object
     });
 </script>

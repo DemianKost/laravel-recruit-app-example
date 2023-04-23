@@ -8,6 +8,7 @@ use App\Models\Vacancy;
 use App\Models\Category;
 use App\Http\Requests\Vacancy\StoreVacancyRequest;
 use App\Http\Resources\Vacancy\GetVacanciesResource;
+use App\Http\Resources\User\UserResource;
 
 class VacanciesController extends Controller
 {
@@ -79,6 +80,7 @@ class VacanciesController extends Controller
     {
         return Inertia::render('Vacancy/Show', [
             'vacancy' => new GetVacanciesResource( $vacancy ),
+            'author' => new UserResource( $vacancy->user )
         ]);
     }
 

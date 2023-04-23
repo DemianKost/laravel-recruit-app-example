@@ -29,6 +29,9 @@ class Vacancy extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    /**
+     * Work type categories of vacancy
+     */
     public function workTypes()
     {
         return $this->hasMany(Category::class)->where('type', 'work_type')->latest();

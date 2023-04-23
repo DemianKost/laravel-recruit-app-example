@@ -51,7 +51,7 @@ class ProfileController extends Controller
     {
         ( $profile->user->role == 1 )
             ? $data = GetVacanciesResource::collection( $profile->user->vacancies )
-            : '';
+            : $data = [];
 
         return Inertia::render('Profile/Show', [
             'user' => $profile->user,
