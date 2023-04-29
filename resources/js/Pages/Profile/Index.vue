@@ -2,14 +2,20 @@
     <Header />
     <div class="container mx-auto flex flex-col items-center">
         <!-- Main profile info -->
-        <ProfileCard :user="user" :editable="true" />
+        <ProfileCard
+            :user="user" 
+            :editable="true"
+        />
 
         <!-- About profile -->
-        <AboutCard :profile="profile" :editable="true" />
+        <AboutCard 
+            :profile="profile" 
+            :editable="true"
+        />
 
         <!-- User vacancies/resume -->
         <VacanciesCard v-if="user.role == 1" :profile="profile" :vacancies="data.info.data" />
-        <ResumeCard v-else :profile="profile" />
+        <ResumeCard v-else :profile="profile" :resume="data.info" :editable="true" />
     </div>
 </template>
 

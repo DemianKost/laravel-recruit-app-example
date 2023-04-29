@@ -18,7 +18,7 @@ class VacancyFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create(),
+            'user_id' => User::factory()->create(['role' => 1]),
             'title' => fake()->text(20),
             'description' => fake()->text(800),
             'salary_from' => fake()->numberBetween(100, 500),

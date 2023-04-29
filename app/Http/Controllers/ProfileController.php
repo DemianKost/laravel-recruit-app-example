@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         ( auth()->user()->role == 1 )
             ? $data = GetVacanciesResource::collection( auth()->user()->vacancies()->get() )
-            : '';
+            : $data = auth()->user()->resume;
 
         return Inertia::render('Profile/Index', [
             'user' => auth()->user()->first(),

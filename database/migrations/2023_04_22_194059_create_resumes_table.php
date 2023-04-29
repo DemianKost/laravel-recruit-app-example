@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class, 'user_id');
             $table->string('position');
             $table->text('description');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

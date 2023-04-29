@@ -16,6 +16,12 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        // Test developer account
+        \App\Models\User::factory()->create([
+            'role' => 0
+        ]);
+
+        // Test recruiter account
         \App\Models\User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',

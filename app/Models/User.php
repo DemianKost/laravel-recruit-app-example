@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Vacancy;
 use App\Models\Profile;
+use App\Models\Resume;
 
 class User extends Authenticatable
 {
@@ -50,6 +51,12 @@ class User extends Authenticatable
             Profile::create([
                 'user_id' => $user->id
             ]);
+
+            Resume::create([
+                'user_id' => $user->id,
+                'position' => 'None',
+                'description' => 'None'
+            ]);
         });
     }
 
@@ -60,11 +67,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Vacancy::class);
     }
+
     /**
      * Profile data of user
      */
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    /**
+     * Resime of user
+     */
+    public function resume()
+    {
+        return $this->hasOne(Resume::class);
     }
 }
