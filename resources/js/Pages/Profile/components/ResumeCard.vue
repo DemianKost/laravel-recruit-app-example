@@ -7,7 +7,7 @@
         <hr>
         <div class="profile__about mt-3">
 
-            <form v-if="isEditing">
+            <form @submit.prevent="updateResume()" v-if="isEditing">
                 <div class="mb-4">
                     <h3 class="text-lg font-semibold mb-1">Position: </h3>
                     <input v-model="form.position" type="text" class="w-full border border-zinc-300 rounded-xl px-4 py-2" placeholder="Write your position here" />
@@ -35,7 +35,7 @@
 
 <script setup>
     import { ref } from 'vue'
-    import { useForm } from '@inertiajs/vue3';
+    import { useForm } from '@inertiajs/vue3'
 
     let isEditing = ref(false)
 
@@ -49,4 +49,10 @@
         position: props.resume.position,
         description: props.resume.description
     })
+
+    function updateResume() {
+        form.put('/resume/update');
+
+        isEditing = ! isEditing;
+    }
 </script>

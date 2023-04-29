@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VacanciesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,6 @@ Route::middleware('auth')->group( function() {
     Route::resource('/profile', ProfileController::class);
     Route::get('/logout', [UserController::class, 'logout']);
 
+    // Resume routes
+    Route::put('/resume/update', [ResumeController::class, 'update']);
 });
